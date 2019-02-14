@@ -7,6 +7,7 @@ import PickupSavings from './components/PickupSavings/PickupSavings';
 import TaxesFees from './components/TaxesFees/TaxesFees';
 import EstimatedTotal from './components/EstimatedTotal/EstimatedTotal';
 import ItemDetails from './components/ItemDetails/ItemDetails';
+import PromoCode from './components/PromoCode/PromoCode';
 
 // CSS Imports
 import './App.css';
@@ -33,6 +34,7 @@ class App extends Component {
           <EstimatedTotal price={this.state.estimatedTotal.toFixed(2)}/>
           <ItemDetails price={this.state.estimatedTotal.toFixed(2)} />
           <hr />
+          <PromoCode />
         </Container>
       </div>
     );
