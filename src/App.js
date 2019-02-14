@@ -6,6 +6,7 @@ import SubTotal from './components/Subtotal/Subtotal';
 import PickupSavings from './components/PickupSavings/PickupSavings';
 import TaxesFees from './components/TaxesFees/TaxesFees';
 import EstimatedTotal from './components/EstimatedTotal/EstimatedTotal';
+import ItemDetails from './components/ItemDetails/ItemDetails';
 
 // CSS Imports
 import './App.css';
@@ -30,6 +31,7 @@ class App extends Component {
           <TaxesFees taxes={this.state.taxes.toFixed(2)}/>
           <hr />
           <EstimatedTotal price={this.state.estimatedTotal.toFixed(2)}/>
+          <ItemDetails />
         </Container>
       </div>
     );
