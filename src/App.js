@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { handleChange } from './actions/promoCodeActions';
 
 // Components
 import SubTotal from './components/Subtotal/Subtotal';
@@ -17,13 +19,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      total: 100,
+      total: 20,
       pickupSavings: -3.85,
       taxes: 0,
       estimatedTotal: 0,
       disablePromoButton: false,
-
-    }
+    };
   }
 
   componentDidMount = () => {
@@ -39,6 +40,19 @@ class App extends Component {
     )
   }
   
+  giveDiscountHandler = () => {
+    if(this.props.promoCode === 'DISCOUNT') {
+      this.setState({
+        estimatedTotal: this.state.estimatedTotal * 0.9
+      }, 
+      function() {
+        this.setState({
+          disablePromoButton: true
+        });
+      }
+      );
+    }
+  }
 
   render() {
     return (
@@ -61,4 +75,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  promoCode: state.promoCode.value
+})
+
+export default connect(mapStateToProps, { handleChange })(App);
